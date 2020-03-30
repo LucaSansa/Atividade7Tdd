@@ -97,6 +97,36 @@ describe('Calculadora', () => {
 
     });
 
+    test('gerente que ganha mais de 5000', () => {
+        let props = calculadora.desenvolvedor({
+            nome: 'lucas',
+            cargo: 'gerente',
+            salario: 7000.00,
+        });
+
+        expect(props.length).toBe(1);
+        expect(props[0]).toBeDeepCloseTo({
+            
+            salarioLiquido: 4900.00
+        }, 2);
+
+    });
+
+    test('gerente que ganha menos de 5000', () => {
+        let props = calculadora.desenvolvedor({
+            nome: 'lucas',
+            cargo: 'gerente',
+            salario: 4500.00,
+        });
+
+        expect(props.length).toBe(1);
+        expect(props[0]).toBeDeepCloseTo({
+            
+            salarioLiquido: 3600.00
+        }, 2);
+
+    });
+
 
     test('entrada invalida', () => {
         let props = calculadora.desenvolvedor({
