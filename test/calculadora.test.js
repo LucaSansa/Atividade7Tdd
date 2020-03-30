@@ -37,6 +37,36 @@ describe('Calculadora', () => {
 
     });
 
+    test('dba que ganha mais de 2000', () => {
+        let props = calculadora.desenvolvedor({
+            nome: 'lucas',
+            cargo: 'dba',
+            salario: 3000.00,
+        });
+
+        expect(props.length).toBe(1);
+        expect(props[0]).toBeDeepCloseTo({
+            
+            salarioLiquido: 2250.00
+        }, 2);
+
+    });
+
+    test('dba que ganha menos de 2000', () => {
+        let props = calculadora.desenvolvedor({
+            nome: 'lucas',
+            cargo: 'dba',
+            salario: 1500.00,
+        });
+
+        expect(props.length).toBe(1);
+        expect(props[0]).toBeDeepCloseTo({
+            
+            salarioLiquido: 1275.00
+        }, 2);
+
+    });
+
 
     test('entrada invalida', () => {
         let props = calculadora.desenvolvedor({
